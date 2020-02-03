@@ -6,5 +6,9 @@ public class CV {
 	
 	 private String nom;
 	 private String prenom;
-
-}
+	 
+	 
+	 //public static void afficher(String nom, String prenom, String Formation, int expTravail, ) {
+		 
+	 }
+//}
