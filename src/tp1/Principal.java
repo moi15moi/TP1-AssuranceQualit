@@ -1,4 +1,4 @@
-package tp1;
+package tp1; 
 
 public class Principal {
 
@@ -6,11 +6,15 @@ public class Principal {
 		
 		System.out.println("Bienvenue chez Barette!");
 		
-		CV simon = new CV();
-		CV jeremie = new CV();
+		String tableauSimonCompetence[] = {"Autonome", "Charmant", "Débrouillard"};
+		String tableauJeremieCompetence[] = {"Autonome", "Responsable", "Débrouillard"};
+
+		CV simon = new CV("Delteil", "Simon", "Technique en informatique de gestion", 0, tableauSimonCompetence, "Avoir du travail");
+		CV jeremie = new CV("Bergeron", "Jérémie", "Technique en informatique de gestion", 2, tableauJeremieCompetence, "Avoir du travail");
 		
-		simon.afficher( prenom, formation, expTravail, competence, attente);
-		jeremie.afficher(nom, prenom, formation, expTravail, competence, attente);
+		simon.afficher();
+		System.out.println();
+		jeremie.afficher();
 	}
 
 }
