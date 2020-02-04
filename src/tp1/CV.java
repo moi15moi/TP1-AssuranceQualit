@@ -15,9 +15,9 @@ public class CV {
 	 public static void afficher(String nom, String prenom, String formation, int expTravail, String[] competence, String attente ) {
 		 
 		 System.out.println("Nom : " + nom + "\nPrenom : " + prenom + "\nFormation : " + formation
-	 + "\nNombre d'années d'expérience au travail : " + expTravail + "") {
+	 + "\nNombre d'années d'expérience au travail : " + expTravail + "\nCompétences : " + competence + "\nAttente : " + attente); 
 		 
-		 }
+		 
 	 }
 	 
 }
