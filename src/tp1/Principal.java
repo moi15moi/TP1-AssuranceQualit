@@ -4,6 +4,10 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		lireCommande test = new lireCommande();
+		
+		test.lol();
+		
 		System.out.println("Bienvenue chez Barette!");
 		
 		String tableauSimonCompetence[] = {"Autonome", "Charmant", "Débrouillard"};
@@ -17,4 +21,5 @@ public class Principal {
 		jeremie.afficher();
 	}
 
+	
 }
