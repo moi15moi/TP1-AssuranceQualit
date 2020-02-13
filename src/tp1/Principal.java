@@ -6,19 +6,8 @@ public class Principal {
 		
 		lireCommande test = new lireCommande();
 		
-		test.lol();
 		
-		System.out.println("Bienvenue chez Barette!");
 		
-		String tableauSimonCompetence[] = {"Autonome", "Charmant", "Débrouillard"};
-		String tableauJeremieCompetence[] = {"Autonome", "Responsable", "Débrouillard"};
-
-		CV simon = new CV("Delteil", "Simon", "Technique en informatique de gestion", 0, tableauSimonCompetence, "Avoir du travail");
-		CV jeremie = new CV("Bergeron", "Jérémie", "Technique en informatique de gestion", 2, tableauJeremieCompetence, "Avoir du travail");
-		
-		simon.afficher();
-		System.out.println();
-		jeremie.afficher();
 	}
 
 	
