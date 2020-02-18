@@ -1,0 +1,47 @@
+Normes de programmation
+
+	Nommenclature des variables : 
+1. le nom des variables doit être significatif de son utilité.
+2. les caractères spéciaux en plus du point et des espaces sont interdits mise à part le '_'.
+3. le nom des variables a une longueur maximale de 200 caractères.
+4. les abbréviations sont permises mais chaque lettre doit être en majuscule.
+5. toutes les lettres doivent être en minuscule à moins que le nom contienne plusieurs mots (se réferer à la règle 6).
+6. si le nom d'une variable contient plusieurs mots, le '_' peut être utiliser pour séparer chacun des mots
+ou bien mettre la première lettre de chacun des mots en majuscule mise à part le premier.
+
+	Nommenclature des constantes : 
+1. le nom des constantes doit être significatif de son utilité.
+2. les caractères spéciaux en plus du point et des espaces sont interdits mise à part le '_'.
+3. le nom des constantes a une longueur maximale de 200 caractères.
+4. les abbréviations sont interdites pour nommer les constantes.
+5. toutes les lettres doivent être en MAJUSCULE à moins que le nom contienne plusieurs mots (se réferer à la règle 6).
+6. si un nom d'une constante contient plusieurs mots, le '_' doit être utiliser pour séparer chacun des mots.
+
+	Nommeclature des méthode : 
+1. le nom des méthodes doit être significatif de son utilité.
+2. les caractères spéciaux en plus du point et des espaces sont interdits mise à part le '_'.
+3. le nom des méthodes a une longueur maximale de 200 caractères.
+4. les abbréviations sont permises mais chaque lettre doit être en majuscule.
+5. toutes les lettres du nom doivent être en minuscule mise à part si le nom contient plusieurs mots (se réferer à la règle 6).
+ou que le nom est une abbréviation (se référer à la règle 4).
+6. si le nom d'une méthode contient plusieurs mots, le '_' peut être utilisé pour séparer chacun des mots.
+ou bien mettre en majuscule la première lettre de chacun des mots mise à part le premier. 
+
+	Nommemclature des classes : 
+1. le nom des classes doit être significatif de ses méthodes et de ses variables.
+2. les caractères spéciaux en plus du point et des espaces sont interdits.
+3. le nom des classes a une longueur maximale de 100 caractères.
+4. les abbréviations sont permises mais le tout doit être en majuscule.
+5. la première lettre du nom doit être une majuscule et le reste doit être en minuscule mise à part si le nom contient.
+plusieurs mots (se référer à la règle 6) ou si le nom est une abbréviation (se référer à la règle 4).
+6. si le nom d'une classe contient plusieurs mots, mettre la première lettre de chaque mot en majuscule.
+
+	Utilisation des commentaires : 
+1. un commentaire faisant référence à une ligne de code en particulier devrait commencer à la fin de cette même ligne. Si cette  
+ligne de code est trop longue pour mettre un commentaire, mettre le commentaire sur la ligne en dessous et l'encadrer de '^'.
+2. un commentaire doit être entièrement visible sans avoir à utiliser la barre de défilement horizontale.
+3. garder les commentaires le plus brefs possibles.
+4. Ne pas marquer de commentaires inutiles.
+5. Ne pas laisser du code en commentaire à moins qu'il en soit nécessaire. si tel est le cas, expliquer brièvement pourquoi.
+6. Les commentaires peuvent être utilisés pour expliquer des variables, des méthodes, des lignes de code complexes ou pour laisser
+toutes autres information jugées pertinentes.
