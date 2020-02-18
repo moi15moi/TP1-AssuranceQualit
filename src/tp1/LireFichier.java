@@ -35,7 +35,7 @@ public class LireFichier {
 			int commande = fichier.indexOf("Commandes :");
 			int fin = fichier.indexOf("Fin");
 
-			for (int i = client + 1; i < plat; i++) {
+			for (int i = client + 2; i < plat; i++) {
 				Client cliTemp = new Client(fichier.get(i));
 				this.client.add(cliTemp);
 			}

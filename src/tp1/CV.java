@@ -27,7 +27,7 @@ public class CV {
 				+ "\nNombre d'années d'expérience au travail : " + expTravail + "\nCompétences : ");
 		
 		for (int i = 0; i < competence.length; i++) {
-			System.out.print(competence[i] + " ");
+			System.out.print(competence[i] + ", ");
 		}
 		
 		System.out.println("\nAttente : " + attente);
