@@ -23,7 +23,7 @@ public class CV {
 
 	public void afficher() {
 
-		System.out.print("Nom : " + nom + "\nPrenom : " + prenom + "\nFormation : " + formation
+		System.out.print("\nNom : " + nom + "\nPrenom : " + prenom + "\nFormation : " + formation
 				+ "\nNombre d'années d'expérience au travail : " + expTravail + "\nCompétences : ");
 		
 		for (int i = 0; i < competence.length; i++) {

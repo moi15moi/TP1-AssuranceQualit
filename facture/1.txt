@@ -1,13 +1,14 @@
 Clients :
-Roger
-Céline
-Steeve
+Simon
+Jérémie
+Anthony
 Plats :
-Poutine 10.5
-Frites 2.5
-Repas_Poulet 15.75
+Burger 7.50
+Frites 3
+Boisson_Gazeuse 2.75
 Commandes :
-Roger Poutine 1
-Céline Frites 2
-Céline Repas_Poulet 1
+Anthony Burger 4
+Simon Burger 1
+Jérémie Boisson_Gazeuse1
+Simon Frite 2
 Fin
