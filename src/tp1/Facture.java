@@ -59,7 +59,7 @@ public class Facture {
 	public void afficherFacture() {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
 
-		System.out.println("Factures");
+		System.out.println("Factures :\n");
 
 		for (int i = 0; i < client.size(); i++) {
 
