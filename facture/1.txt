@@ -1,6 +1,6 @@
 Clients :
 Simon
-Jérémie
+Jeremie
 Anthony
 Plats :
 Burger 7.50
@@ -9,6 +9,6 @@ Boisson_Gazeuse 2.75
 Commandes :
 Anthony Burger 4
 Simon Burger 1
-Jérémie Boisson_Gazeuse 156777777777777777777777777777777777
+Jeremie Boisson_Gazeuse 1
 Simon Frites 2
 Fin
