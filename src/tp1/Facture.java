@@ -78,6 +78,8 @@ public class Facture {
 				if (commandeTrouve.get(i).getRepas().equalsIgnoreCase(plats.get(j2).getNom())) {
 					prix += plats.get(j2).getPrix() * commandeTrouve.get(i).getQuantite();
 					trouve = true;
+					
+					prix = AjoutTaxes(prix);
 				}
 			}
 			
@@ -99,6 +101,24 @@ public class Facture {
 		}
 
 		return commandeTrouve;
+	}
+	/*Argument: le prix brût.
+	 * 
+	 *Retour: le prix avec les taxes ajoutées.
+	 * 
+	 *Description: prend le prix brût qui est appelé et ajoute les taxes.
+	 */
+	public double AjoutTaxes(double prixBrut) {
+		
+		//déclarations des variables des taxes et d'une autre variable de prix
+		double prixTotal;
+		double TPS = 5;
+		double TVQ = 9.975;
+		
+		//calcul de l'ajout des taxes au prix
+		prixTotal = prixBrut + (prixBrut * ((TPS + TVQ)/100));
+		
+		return prixTotal;
 	}
 
 }
