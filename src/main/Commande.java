@@ -1,12 +1,12 @@
-package tp1;
+package main;
 
 public class Commande {
 
-	private String nom, repas;
+	private String nomClient, repas;
 	int quantite;
 
 	public Commande(String nom, String repas, String quantite) {
-		this.nom = nom;
+		this.nomClient = nom;
 		this.repas = repas;
 
 		try {
@@ -16,8 +16,8 @@ public class Commande {
 		}
 	}
 
-	public String getNom() {
-		return this.nom;
+	public String getNomClient() {
+		return this.nomClient;
 	}
 
 	public String getRepas() {

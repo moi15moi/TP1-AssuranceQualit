@@ -1,4 +1,4 @@
-package tp1;
+package main;
 
 public class Client {
 
@@ -6,13 +6,12 @@ public class Client {
 
 	public Client(String nom) {
 		setNom(nom);
-
 	}
 
 	public String getNom() {
 		return this.nom;
 	}
-	
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
