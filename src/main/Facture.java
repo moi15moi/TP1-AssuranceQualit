@@ -1,4 +1,4 @@
-package tp1;
+package main;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -8,10 +8,10 @@ public class Facture {
 	private ArrayList<Client> client = new ArrayList<Client>();
 	private ArrayList<Plats> plats = new ArrayList<Plats>();
 	private ArrayList<Commande> commande = new ArrayList<Commande>();
-	
+
 	public Facture(ArrayList<String> fichier) {
 		try {
-			
+
 			int client = fichier.indexOf("Clients :");
 			int plat = fichier.indexOf("Plats :");
 			int commande = fichier.indexOf("Commandes :");
@@ -22,10 +22,9 @@ public class Facture {
 				this.client.add(cliTemp);
 			}
 
-			
 			for (int i = plat + 1; i < commande; i++) {
 				String[] ligneFichier = fichier.get(i).split(" ");
-				
+
 				if (ligneFichier.length == 2) {
 					Plats platTemp = new Plats(ligneFichier[0], ligneFichier[1]);
 
@@ -35,25 +34,23 @@ public class Facture {
 				}
 			}
 
-			
 			for (int i = commande + 1; i < fin; i++) {
 
 				String[] ligneFichier = fichier.get(i).split(" ");
-				
-				if (ligneFichier.length == 3) {
-				Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], ligneFichier[2]);
 
-				this.commande.add(comTemp);
+				if (ligneFichier.length == 3) {
+					Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], ligneFichier[2]);
+
+					this.commande.add(comTemp);
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
 				}
 			}
-			
-			
+
 		} catch (Exception e) {
 			System.out.println("Le fichier ne respecte pas le format demandé !");
 		}
-		
+
 	}
 
 	public void afficherFacture() {
@@ -64,7 +61,7 @@ public class Facture {
 
 		for (int i = 0; i < client.size(); i++) {
 
-			if ((prixFactureClient = calculTaxes(calculerPrixTotalCommande(getCommandeSelonClient(client.get(i))))) != 0) {
+			if ((prixFactureClient = calculerPrixTotalCommande(getCommandeSelonClient(client.get(i)))) != 0) {
 
 				System.out.println(client.get(i).getNom() + " " + formatter.format(prixFactureClient) + "$");
 			}
@@ -121,25 +118,6 @@ public class Facture {
 		}
 
 		return prix;
-	}
-	
-	/*Argument: le prix brût.
-	 * 
-	 *Retour: le prix avec les taxes ajoutées.
-	 * 
-	 *Description: prend le prix brût qui est appelé et ajoute les taxes.
-	 */
-	public double calculTaxes(double prixBrut) {
-		
-		//déclarations des variables des taxes et d'une autre variable de prix
-		double prixTotal;
-		double TPS = 5;
-		double TVQ = 9.975;
-		
-		//calcul de l'ajout des taxes au prix
-		prixTotal = prixBrut + (prixBrut * ((TPS + TVQ)/100));
-		
-		return prixTotal;
 	}
 
 }
