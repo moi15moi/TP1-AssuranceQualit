@@ -10,16 +10,15 @@ public class Principal {
 		
 		PrintStream fichierTexte = new PrintStream(new File("facture\\Facture-du-" + DateHeure.modifierAffichageDateHeure() + ".txt"));
 		
-		System.out.println("Bienvenue chez Barette!\n");
+		System.out.println("Bienvenue chez Barette !\n");
 		
 		LireFichier fichier = new LireFichier("facture\\1.txt");
 		
 		Facture facture = new Facture(fichier.getFichier());
 
-		facture.afficherFacture();
-		
+		System.out.println(facture.getFacture());
 		System.setOut(fichierTexte); 
-		facture.afficherFacture();
+		System.out.println(facture.getFacture());
 	}
 
 }

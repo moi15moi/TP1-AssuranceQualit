@@ -8,7 +8,7 @@ Frites 2.5
 Repas_Poulet 15.75
 Commandes :
 Roger Poutine 1
-Roger Frites 1
+Roger Frites 0
 Céline Frites 2
 test Repas_Poulet 1
 Céline Repaus_Poulet 1
