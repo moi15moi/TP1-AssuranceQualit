@@ -30,7 +30,7 @@ public class Facture {
 
 					this.plats.add(platTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 
@@ -43,12 +43,12 @@ public class Facture {
 
 					this.commande.add(comTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respecte pas le format demandé !");
+			System.out.println("Le fichier ne respecte pas le format demandï¿½ !");
 		}
 
 	}
@@ -113,7 +113,7 @@ public class Facture {
 			}
 
 			if (!trouve) {
-				System.out.println("Il n'existe pas de plat nommé: " + commandeSelonXClient.get(i).getRepas());
+				System.out.println("Il n'existe pas de plat nommÃ©: " + commandeSelonXClient.get(i).getRepas());
 			}
 		}
 

@@ -31,7 +31,7 @@ public class Facture {
 
 					this.plats.add(platTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 
@@ -45,13 +45,13 @@ public class Facture {
 
 				this.commande.add(comTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 			
 			
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respecte pas le format demandé !");
+			System.out.println("Le fichier ne respecte pas le format demandÃ©. !");
 		}
 		
 	}
@@ -116,28 +116,49 @@ public class Facture {
 			}
 
 			if (!trouve) {
-				System.out.println("Il n'existe pas de plat nommé: " + commandeSelonXClient.get(i).getRepas());
+				System.out.println("Il n'existe pas de plat nommÃ©: " + commandeSelonXClient.get(i).getRepas());
 			}
 		}
 
 		return prix;
 	}
 	
-	/*Argument: le prix brût.
+	/*Argument: le prix brÃ»t.
 	 * 
-	 *Retour: le prix avec les taxes ajoutées.
+	 *Retour: le prix avec les taxes ajoutÃ©es.
 	 * 
-	 *Description: prend le prix brût qui est appelé et ajoute les taxes.
+	 *Description: prend le prix brÃ»t qui est appelÃ© et ajoute les taxes.
 	 */
-	public double calculTaxes(double prixBrut) {
+	public static double calculTaxes(double prixBrut) {
 		
-		//déclarations des variables des taxes et d'une autre variable de prix
+		//dÃ©clarations des variables des taxes et d'une autre variable de prix
 		double prixTotal;
-		double TPS = 5;
-		double TVQ = 9.975;
+		double montantTPS = calculTPS(prixBrut);
+		double montantTVQ = calculTVQ(prixBrut);
 		
 		//calcul de l'ajout des taxes au prix
-		prixTotal = prixBrut + (prixBrut * ((TPS + TVQ)/100));
+		prixTotal = calculPrixTotal(prixBrut, montantTPS, montantTVQ);
+		
+		return prixTotal;
+	}
+	
+	public static double calculTPS(double prixBrut) {
+		
+		double montantTPS = prixBrut * 5 / 100;
+		
+		return montantTPS;
+	}
+	
+	public static double calculTVQ(double prixBrut) {
+		
+		double montantTVQ = prixBrut * 9.975 / 100;
+		
+		return montantTVQ;
+	}
+	
+	public static double calculPrixTotal( double prixBrut, double montantTPS, double montantTVQ ) {
+		
+		double prixTotal = prixBrut + montantTPS + montantTVQ;
 		
 		return prixTotal;
 	}

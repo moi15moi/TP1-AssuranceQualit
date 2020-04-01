@@ -1,0 +1,6 @@
+Factures :
+
+Roger 14.95$
+Il n'existe pas de plat nommé: Repaus_Poulet
+Erreur, le client C?line n'existent pas.
+Erreur, le client test n'existent pas.
