@@ -1,5 +1,8 @@
 package tp1;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -169,6 +172,27 @@ public class Facture {
 		}
 
 		return prixTotal;
+	}
+	
+	/*
+	 * Argument: Aucun.
+	 * 
+	 * Retour: Rien.
+	 * 
+	 * Description: Enregistre la facture en fichier texte.
+	 */
+	public void enregistrerFactureFicher() {
+		File file = new File("facture\\Facture-du-" + DateHeure.modifierAffichageDateHeure() + ".txt");
+
+		FileWriter writer;
+		try {
+			writer = new FileWriter(file);
+			writer.write(getFacture());
+			writer.close();
+
+		} catch (IOException e) {
+			System.out.println("Erreur lors de l'enregistrement de la facture en fichier texte.");
+		}
 	}
 
 }
