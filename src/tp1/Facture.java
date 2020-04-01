@@ -63,7 +63,6 @@ public class Facture {
 	 * Description: Fait appele à la méthode calculerFacture et retourne la facture.
 	 */
 	public String getFacture() {
-		calculerFacture();
 		return facture + "\n" + erreurFacture;
 	}
 
@@ -77,6 +76,9 @@ public class Facture {
 	public void calculerFacture() {
 		double prixFactureClient;
 		DecimalFormat formatter = new DecimalFormat("#0.00");
+		
+		facture = "";
+        erreurFacture = "";
 
 		facture += "Factures :\n";
 

@@ -15,10 +15,12 @@ public class Principal {
 		LireFichier fichier = new LireFichier("facture\\1.txt");
 		
 		Facture facture = new Facture(fichier.getFichier());
-
+		
+		facture.calculerFacture();
 		System.out.println(facture.getFacture());
-		System.setOut(fichierTexte); 
-		System.out.println(facture.getFacture());
+		
+		System.setOut(fichierTexte);
+		System.out.println("Bienvenue chez Barette !\n");
+        System.out.println(facture.getFacture());
 	}
-
 }
