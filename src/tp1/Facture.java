@@ -137,9 +137,7 @@ public class Facture {
 					} else {
 						erreurFacture += "Erreur, la commande " + i + " de " + listeCommande.get(i).getNomClient()
 
-								+ " n'est pas valide, car la quanti� command�e est "
-
-								+ " n'est pas valide, car la quanti� command�e est "
+								+ " n'est pas valide, car la quantié command�e est "
 
 								+ listeCommande.get(i).getQuantite() + ".\n";
 					}
@@ -148,7 +146,7 @@ public class Facture {
 
 			if (!trouve) {
 
-				erreurFacture += "Erreur, il n'existe pas de plat nomm�: " + listeCommande.get(i).getRepas() + ".\n";
+				erreurFacture += "Erreur, il n'existe pas de plat nommé: " + listeCommande.get(i).getRepas() + ".\n";
 
 			}
 		}
