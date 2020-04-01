@@ -63,11 +63,7 @@ public class Facture {
 	 * 
 	 * Retour: Retourne les variables globales "facture" et "erreurFacture".
 	 * 
-<<<<<<< HEAD
 	 * Description: Fait appele � la m�thode calculerFacture et retourne la facture.
-=======
-	 * Description: Fait appele � la m�thode calculerFacture et retourne la facture.
->>>>>>> 899d6d5dd490348c21ce3ce86a8b96e646eac5f2
 	 */
 	public String getFacture() {
 		return facture + "\n" + erreurFacture;
