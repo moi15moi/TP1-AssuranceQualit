@@ -9,7 +9,6 @@ public class Client {
 
 	public Client(String nom) {
 		setNom(nom);
-
 	}
 
 	public String getNom() {

@@ -1,0 +1,7 @@
+Factures :
+Roger 12,07$
+Céline 5,75$
+
+Erreur, le client test n'existent pas.
+Erreur, la commande 1 de Roger n'est pas valide, car la quantié commandée est 0.
+Erreur, il n'existe pas de plat nommé: Repaus_Poulet.

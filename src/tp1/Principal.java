@@ -1,10 +1,6 @@
 package tp1;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
 
 public class Principal {
 
@@ -15,7 +11,9 @@ public class Principal {
 
 		LireFichier fichier = new LireFichier("facture\\1.txt");
 
-		Facture facture = new Facture(fichier.getFichier());
+		Facture facture = new Facture();
+		
+		facture.initialiserFacture(fichier.getFichier());
 
 		facture.calculerFacture();
 

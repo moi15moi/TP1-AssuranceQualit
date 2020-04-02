@@ -5,8 +5,8 @@ public class Commande {
 	private String nomClient, repas;
 	int quantite;
 
-	public Commande(String nom, String repas, String quantite) {
-		this.nomClient = nom;
+	public Commande(String nomClient, String repas, String quantite) {
+		this.nomClient = nomClient;
 		this.repas = repas;
 
 		try {

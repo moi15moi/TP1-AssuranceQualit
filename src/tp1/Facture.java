@@ -12,9 +12,14 @@ public class Facture {
 	private ArrayList<Plats> plats = new ArrayList<Plats>();
 	private ArrayList<Commande> commande = new ArrayList<Commande>();
 
-	private String facture = "", erreurFacture = "";
+	private String facture = "";
+	private String erreurFacture = "";
 
-	public Facture(ArrayList<String> fichier) {
+	public Facture() {
+		
+	}
+	
+	public void initialiserFacture(ArrayList<String> fichier) {
 		try {
 
 			int client = fichier.indexOf("Clients :");
@@ -52,10 +57,27 @@ public class Facture {
 				}
 			}
 
+			// Associe les commandes aux clients et v�rifie si le client dans la commande
+			// existe
+			for (int i = 0; i < this.commande.size(); i++) {
+
+				boolean trouver = false;
+				for (int j = 0; j < this.client.size() && !trouver; j++) {
+
+					if (this.commande.get(i).getNomClient().equalsIgnoreCase(this.client.get(j).getNom())) {
+						trouver = true;
+						this.client.get(j).ajouterCommande(this.commande.get(i));
+					}
+				}
+
+				if (!trouver) {
+					erreurFacture += "Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n";
+				}
+			}
+
 		} catch (Exception e) {
 			System.out.println("Le fichier ne respecte pas le format demandé. !");
 		}
-
 	}
 
 	/*
@@ -63,7 +85,8 @@ public class Facture {
 	 * 
 	 * Retour: Retourne les variables globales "facture" et "erreurFacture".
 	 * 
-	 * Description: Fait appele � la m�thode calculerFacture et retourne la facture.
+	 * Description: Fait appele � la m�thode calculerFacture et retourne la
+	 * facture.
 	 */
 	public String getFacture() {
 		return facture + "\n" + erreurFacture;
@@ -79,37 +102,20 @@ public class Facture {
 	public void calculerFacture() {
 		double prixFactureClient;
 		DecimalFormat formatter = new DecimalFormat("#0.00");
-		
+
 		facture = "";
-        erreurFacture = "";
+		erreurFacture = "";
 
 		facture += "Factures :\n";
-		
-		// Associe les commandes aux clients et v�rifie si le client dans la commande
-		// existe
-		for (int i = 0; i < commande.size(); i++) {
 
-			boolean trouver = false;
-			for (int j = 0; j < client.size() && !trouver; j++) {
-
-				if (commande.get(i).getNomClient().equalsIgnoreCase(client.get(j).getNom())) {
-					trouver = true;
-					client.get(j).ajouterCommande(commande.get(i));
-				}
-			}
-
-			if (!trouver) {
-				erreurFacture += "Erreur, le client " + commande.get(i).getNomClient() + " n'existent pas.\n";
-			}
-		}
-
-		// Calcule le prix total de la facture et v�rifie si le prix total est �gale � 0
+		// Calcule le prix total de la facture et v�rifie si le prix total est �gale
+		// � 0
 		for (int i = 0; i < client.size(); i++) {
 
 			if ((prixFactureClient = calculTaxes(calculerPrixBrutCommande(client.get(i)))) != 0) {
 
 				facture += client.get(i).getNom() + " " + formatter.format(prixFactureClient) + "$\n";
-			}			
+			}
 		}
 	}
 
@@ -136,7 +142,6 @@ public class Facture {
 						prix += plats.get(j2).getPrix() * listeCommande.get(i).getQuantite();
 					} else {
 						erreurFacture += "Erreur, la commande " + i + " de " + listeCommande.get(i).getNomClient()
-
 								+ " n'est pas valide, car la quanti� command�e est "
 
 								+ " n'est pas valide, car la quanti� command�e est "
@@ -155,47 +160,48 @@ public class Facture {
 
 		return prix;
 	}
-	
-	/*Argument: le prix brût.
+
+	/*
+	 * Argument: le prix brût.
 	 * 
-	 *Retour: le prix avec les taxes ajoutées.
+	 * Retour: le prix avec les taxes ajoutées.
 	 * 
-	 *Description: prend le prix brût qui est appelé et ajoute les taxes.
+	 * Description: prend le prix brût qui est appelé et ajoute les taxes.
 	 */
-	public static double calculTaxes(double prixBrut) {
-		
-		//déclarations des variables des taxes et d'une autre variable de prix
+	public double calculTaxes(double prixBrut) {
+
+		// déclarations des variables des taxes et d'une autre variable de prix
 		double prixTotal;
 		double montantTPS = calculTPS(prixBrut);
 		double montantTVQ = calculTVQ(prixBrut);
-		
-		//calcul de l'ajout des taxes au prix
+
+		// calcul de l'ajout des taxes au prix
 		prixTotal = calculPrixTotal(prixBrut, montantTPS, montantTVQ);
-		
+
 		return prixTotal;
 	}
-	
-	public static double calculTPS(double prixBrut) {
-		
+
+	public double calculTPS(double prixBrut) {
+
 		double montantTPS = prixBrut * 5 / 100;
-		
+
 		return montantTPS;
 	}
-	
-	public static double calculTVQ(double prixBrut) {
-		
+
+	public double calculTVQ(double prixBrut) {
+
 		double montantTVQ = prixBrut * 9.975 / 100;
-		
+
 		return montantTVQ;
 	}
-	
-	public static double calculPrixTotal( double prixBrut, double montantTPS, double montantTVQ ) {
-		
+
+	public double calculPrixTotal(double prixBrut, double montantTPS, double montantTVQ) {
+
 		double prixTotal = prixBrut + montantTPS + montantTVQ;
-		
+
 		return prixTotal;
 	}
-	
+
 	/*
 	 * Argument: Aucun.
 	 * 
