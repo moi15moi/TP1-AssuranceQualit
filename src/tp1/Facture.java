@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import static tp1.Constantes.TPS;
+import static tp1.Constantes.TVQ;
 
 public class Facture {
 
@@ -57,7 +59,7 @@ public class Facture {
 				}
 			}
 
-			// Associe les commandes aux clients et v�rifie si le client dans la commande
+			// Associe les commandes aux clients et vérifie si le client dans la commande
 			// existe
 			for (int i = 0; i < this.commande.size(); i++) {
 
@@ -142,7 +144,7 @@ public class Facture {
 						prix += plats.get(j2).getPrix() * listeCommande.get(i).getQuantite();
 					} else {
 						erreurFacture += "Erreur, la commande " + i + " de " + listeCommande.get(i).getNomClient()
-								+ " n'est pas valide, car la quanti� command�e est "
+								+ " n'est pas valide, car la quantié commandée est "
 								+ listeCommande.get(i).getQuantite() + ".\n";
 					}
 				}
@@ -180,14 +182,14 @@ public class Facture {
 
 	public double calculTPS(double prixBrut) {
 
-		double montantTPS = prixBrut * 5 / 100;
+		double montantTPS = prixBrut * TPS / 100;
 
 		return montantTPS;
 	}
 
 	public double calculTVQ(double prixBrut) {
 
-		double montantTVQ = prixBrut * 9.975 / 100;
+		double montantTVQ = prixBrut * TVQ / 100;
 
 		return montantTVQ;
 	}
@@ -219,5 +221,4 @@ public class Facture {
 			System.out.println("Erreur lors de l'enregistrement de la facture en fichier texte.");
 		}
 	}
-
 }

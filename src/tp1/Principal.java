@@ -6,7 +6,6 @@ public class Principal {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-
 		System.out.println("Bienvenue chez Barette !\n");
 
 		LireFichier fichier = new LireFichier("facture\\1.txt");

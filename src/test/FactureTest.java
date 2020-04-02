@@ -13,53 +13,60 @@ import tp1.Facture;
 import tp1.Plats;
 
 public class FactureTest {
+	
+	Facture facture = new Facture();
 
 	// fait par Simon Delteil
 	@Test
 	public void calculTaxesTest() {
-		assertEquals(1.14975, Facture.calculTaxes(1), 0.00001);
-		assertEquals(2.2995, Facture.calculTaxes(2), 0.00001);
-		assertEquals(3.44925, Facture.calculTaxes(3), 0.00001);
+		assertEquals(1.14975, facture.calculTaxes(1), 0.00001);
+		assertEquals(2.2995, facture.calculTaxes(2), 0.00001);
+		assertEquals(3.44925, facture.calculTaxes(3), 0.00001);
 	}
 
 	// fait par Simon Delteil
 	@Test
 	public void calculTPSTest() {
-		assertEquals(0.05, Facture.calculTPS(1), 0.00001);
-		assertEquals(0.1, Facture.calculTPS(2), 0.00001);
-		assertEquals(0.15, Facture.calculTPS(3), 0.00001);
+		assertEquals(0.05, facture.calculTPS(1), 0.00001);
+		assertEquals(0.1, facture.calculTPS(2), 0.00001);
+		assertEquals(0.15, facture.calculTPS(3), 0.00001);
 	}
 
 	// fait par Simon Delteil
 	@Test
 	public void calculTVQTest() {
-		assertEquals(0.09975, Facture.calculTVQ(1), 0.00001);
-		assertEquals(0.1995, Facture.calculTVQ(2), 0.00001);
-		assertEquals(0.29925, Facture.calculTVQ(3), 0.00001);
+		assertEquals(0.09975, facture.calculTVQ(1), 0.00001);
+		assertEquals(0.1995, facture.calculTVQ(2), 0.00001);
+		assertEquals(0.29925, facture.calculTVQ(3), 0.00001);
 	}
 
 	// fait par Simon Delteil
 	@Test
 	public void calculPrixTotalTest() {
-		assertEquals(1.14975, Facture.calculPrixTotal(1, 0.05, 0.09975), 0.00001);
-		assertEquals(2.2995, Facture.calculPrixTotal(2, 0.1, 0.1995), 0.00001);
-		assertEquals(3.44925, Facture.calculPrixTotal(3, 0.15, 0.29925), 0.00001);
+		assertEquals(1.14975, facture.calculPrixTotal(1, 0.05, 0.09975), 0.00001);
+		assertEquals(2.2995, facture.calculPrixTotal(2, 0.1, 0.1995), 0.00001);
+		assertEquals(3.44925, facture.calculPrixTotal(3, 0.15, 0.29925), 0.00001);
+	}
+	
+	public void test() {
+		
 	}
 
 	/*
 	 * @Test public void getFacture() {
 	 * 
 	 * assertEquals(
-	 * "Factures :\nRoger 12,07$\nCéline 5,75$\n\nErreur, la commande 1 de Roger n'est pas valide, car la quantiï¿½ commandï¿½e est  n'est pas valide, car la quantiï¿½ commandï¿½e est 0.\nErreur, il n'existe pas de plat nommï¿½: Repaus_Poulet.\n"
+	 * "Factures :\nRoger 12,07$\nCï¿½line 5,75$\n\nErreur, la commande 1 de Roger n'est pas valide, car la quantiï¿½ commandï¿½e est  n'est pas valide, car la quantiï¿½ commandï¿½e est 0.\nErreur, il n'existe pas de plat nommï¿½: Repaus_Poulet.\n"
 	 * , Facture.getFacture());
 	 * 
 	 * //assertEquals(expected, actual); }
 	 */
 
-	// fait par Jérémie Bergeron
+	// fait par JÃ©rÃ©mie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest() {
 		Client client1 = new Client("test");
+		
 		Commande commande1 = new Commande("test1", "repasTest1", "1");
 		Commande commande2 = new Commande("test2", "repasTest2", "2");
 		Commande commande3 = new Commande("test3", "repasTest3", "3");
@@ -67,16 +74,12 @@ public class FactureTest {
 		Plats repas1 = new Plats("repasTest1", "10");
 		Plats repas2 = new Plats("repasTest2", "5");
 		Plats repas3 = new Plats("repasTest3", "5");
-		
 
 		client1.ajouterCommande(commande1);
 		client1.ajouterCommande(commande2);
 		client1.ajouterCommande(commande3);
 		
-		Facture facture = new Facture();
-		
-		//assertEquals(35, facture.calculerPrixBrutCommande(client1), 0.00001);
-
+		assertEquals(35, facture.calculerPrixBrutCommande(client1), 0.00001);
 
 	}
 
