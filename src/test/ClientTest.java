@@ -10,7 +10,7 @@ public class ClientTest {
 	
 	Client clientTest1 = new Client("Test1");
 	Client clientTest2 = new Client("Test2");
-	Client clientTest3 = new Client("Test3");	
+	Client clientTest3 = new Client("Test3");
 	
 	//fait par Simon Delteil
 	@Test

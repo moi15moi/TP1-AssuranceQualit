@@ -9,7 +9,7 @@ public class DateHeure {
 		
 		LocalDateTime dateHeure = LocalDateTime.now();
 	
-	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern( "dd-MMMM-yyyy-HH.mm.ss" );
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern( "dd-MMMM-yyyy-HH.mm" );
 	    
 	    String dateFormate = dateHeure.format( myFormatObj );
 		

@@ -19,6 +19,40 @@ import tp1.Plats;
 
 public class FactureTest {
 
+	Facture facture = new Facture();
+
+	// fait par Simon Delteil
+	@Test
+	public void calculTaxesTest() {
+		assertEquals(1.14975, facture.calculTaxes(1), 0.00001);
+		assertEquals(2.2995, facture.calculTaxes(2), 0.00001);
+		assertEquals(3.44925, facture.calculTaxes(3), 0.00001);
+	}
+
+	// fait par Simon Delteil
+	@Test
+	public void calculTPSTest() {
+		assertEquals(0.05, facture.calculTPS(1), 0.00001);
+		assertEquals(0.1, facture.calculTPS(2), 0.00001);
+		assertEquals(0.15, facture.calculTPS(3), 0.00001);
+	}
+
+	// fait par Simon Delteil
+	@Test
+	public void calculTVQTest() {
+		assertEquals(0.09975, facture.calculTVQ(1), 0.00001);
+		assertEquals(0.1995, facture.calculTVQ(2), 0.00001);
+		assertEquals(0.29925, facture.calculTVQ(3), 0.00001);
+	}
+
+	// fait par Simon Delteil
+	@Test
+	public void calculPrixTotalTest() {
+		assertEquals(1.14975, facture.calculPrixTotal(1, 0.05, 0.09975), 0.00001);
+		assertEquals(2.2995, facture.calculPrixTotal(2, 0.1, 0.1995), 0.00001);
+		assertEquals(3.44925, facture.calculPrixTotal(3, 0.15, 0.29925), 0.00001);
+	}
+
 	// fait par Jérémie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest1() {
@@ -133,7 +167,7 @@ public class FactureTest {
 		assertEquals(0, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par Jérémie Bergeron
+	// fait par JÃ©rÃ©mie Bergeron
 	@Test
 	public void initialiserFactureTest() {
 		LireFichier fichier = new LireFichier("facture\\factureTest.txt");
@@ -142,6 +176,7 @@ public class FactureTest {
 		Commande commande1 = new Commande("test", "repasTest1", "1");
 		Commande commande2 = new Commande("test", "repasTest2", "2");
 		Commande commande3 = new Commande("test", "repasTest3", "3");
+
 		Plats repas1 = new Plats("repasTest1", "10");
 		Plats repas2 = new Plats("repasTest2", "5");
 		Plats repas3 = new Plats("repasTest3", "5");
@@ -172,12 +207,10 @@ public class FactureTest {
 
 		factureFichier.initialiserFacture(fichier.getFichier());
 
+		assertEquals(35, facture.calculerPrixBrutCommande(client1), 0.00001);
+
 		assertEquals(facture.calculerPrixBrutCommande(client1),
 				factureFichier.calculerPrixBrutCommande(factureFichier.getTableauClient().get(0)), 0.00001);
 	}
-	
-	
-	
-	
 
 }
