@@ -80,6 +80,30 @@ public class Facture {
 		}
 	}
 
+	public void setTableauClient(ArrayList<Client> pClient) {
+		this.client = pClient;
+	}
+
+	public void setTableauPlats(ArrayList<Plats> pPlats) {
+		this.plats = pPlats;
+	}
+
+	public void setTableauCommande(ArrayList<Commande> pCommande) {
+		this.commande = pCommande;
+	}
+
+	public ArrayList<Client> getTableauClient() {
+	return this.client;
+	}
+
+	public ArrayList<Plats> getTableauPlats() {
+		return this.plats;
+	}
+
+	public ArrayList<Commande> getTableauCommande() {
+		return this.commande;
+	}
+
 	/*
 	 * Argument: Aucun.
 	 * 
@@ -89,6 +113,7 @@ public class Facture {
 	 * facture.
 	 */
 	public String getFacture() {
+
 		return facture + "\n" + erreurFacture;
 	}
 
@@ -208,8 +233,9 @@ public class Facture {
 	 */
 	public void enregistrerFactureFicher() {
 		File file = new File("facture\\Facture-du-" + DateHeure.modifierAffichageDateHeure() + ".txt");
-
 		FileWriter writer;
+		
+		calculerFacture();
 		try {
 			writer = new FileWriter(file);
 			writer.write(getFacture());

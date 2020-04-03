@@ -9,25 +9,35 @@ import tp1.Commande;
 import tp1.Plats;
 
 public class CommandeTest {
-	
+
 	Client clientTest1 = new Client("client1");
 	Client clientTest2 = new Client("client2");
 	Client clientTest3 = new Client("client3");
-	
-	Plats repasTest1 = new Plats( "repas1", "5.00" );
-	Plats repasTest2 = new Plats( "repas2", "10.00" );
-	Plats RepasTest3 = new Plats( "repas3", "15.00" );
-	
+
+	Plats repasTest1 = new Plats("repas1", "5.00");
+	Plats repasTest2 = new Plats("repas2", "10.00");
+	Plats RepasTest3 = new Plats("repas3", "15.00");
+
 	Commande commande1 = new Commande("client1", "repas1", "1");
 	Commande commande2 = new Commande("client2", "repas2", "2");
 	Commande commande3 = new Commande("client3", "repas3", "3");
-	
-	//Fait par Simon Delteil
+
+	// Fait par Simon Delteil
 	@Test
 	public void getNomClientTest() {
 		assertEquals(1, commande1.getQuantite());
 		assertEquals(2, commande2.getQuantite());
 		assertEquals(3, commande3.getQuantite());
+	}
+
+	// Fait par Jérémie Bergeron
+	@Test
+	public void Commande() {
+		Commande commande = new Commande("nomClient", "nomRepas", "11.5");
+
+		assertEquals(null, commande.getNomClient());
+		assertEquals(null, commande.getRepas());
+		assertEquals(0, commande.getQuantite());
 	}
 
 }

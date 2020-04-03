@@ -5,12 +5,13 @@ public class Commande {
 	private String nomClient, repas;
 	int quantite;
 
-	public Commande(String nom, String repas, String quantite) {
-		this.nomClient = nom;
-		this.repas = repas;
+	public Commande(String nomClient, String repas, String quantite) {
+		
 
 		try {
 			this.quantite = Integer.parseInt(quantite);
+			this.nomClient = nomClient;
+			this.repas = repas;
 		} catch (Exception e) {
 			System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
 		}

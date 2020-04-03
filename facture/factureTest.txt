@@ -1,0 +1,11 @@
+Clients :
+test
+Plats :
+repasTest1 10
+repasTest2 5
+repasTest3 5
+Commandes :
+test repasTest1 1
+test repasTest2 2
+test repasTest3 3
+Fin
