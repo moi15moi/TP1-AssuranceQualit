@@ -213,4 +213,17 @@ public class FactureTest {
 				factureFichier.calculerPrixBrutCommande(factureFichier.getTableauClient().get(0)), 0.00001);
 	}
 
+	// Fait par Jérémie Bergeron
+	@Test
+	public void calculerFacture() {
+		LireFichier fichier = new LireFichier("facture\\factureTest.txt");
+
+		Facture factureFichier = new Facture();
+
+		factureFichier.initialiserFacture(fichier.getFichier());
+
+		factureFichier.calculerFacture();
+		
+		assertEquals("Factures :\n" + "test 40,24$\n\n", factureFichier.getFacture());
+	}
 }
