@@ -38,9 +38,13 @@ public class Facture {
 				String[] ligneFichier = fichier.get(i).split(" ");
 
 				if (ligneFichier.length == 2) {
-					Plats platTemp = new Plats(ligneFichier[0], ligneFichier[1]);
-
-					this.plats.add(platTemp);
+					try {
+						double prix = Double.parseDouble(ligneFichier[1]);
+						Plats platTemp = new Plats(ligneFichier[0], prix);
+						this.plats.add(platTemp);
+					} catch (Exception e) {
+						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+					}
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
 				}
@@ -51,9 +55,13 @@ public class Facture {
 				String[] ligneFichier = fichier.get(i).split(" ");
 
 				if (ligneFichier.length == 3) {
-					Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], ligneFichier[2]);
-
-					this.commande.add(comTemp);
+					try {
+						int quantite = Integer.parseInt(ligneFichier[2]);
+						Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], quantite);
+						this.commande.add(comTemp);
+					} catch (Exception e) {
+						System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
+					}
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
 				}
@@ -66,7 +74,7 @@ public class Facture {
 				boolean trouver = false;
 				for (int j = 0; j < this.client.size() && !trouver; j++) {
 
-					if (this.commande.get(i).getNomClient().equalsIgnoreCase(this.client.get(j).getNom())) {
+					if (this.commande.get(i).getNomClient().equalsIgnoreCase(this.client.get(j).getNomClient())) {
 						trouver = true;
 						this.client.get(j).ajouterCommande(this.commande.get(i));
 					}
@@ -95,7 +103,7 @@ public class Facture {
 	}
 
 	public ArrayList<Client> getTableauClient() {
-	return this.client;
+		return this.client;
 	}
 
 	public ArrayList<Plats> getTableauPlats() {
@@ -140,7 +148,7 @@ public class Facture {
 
 			if ((prixFactureClient = calculTaxes(calculerPrixBrutCommande(client.get(i)))) != 0) {
 
-				facture += client.get(i).getNom() + " " + formatter.format(prixFactureClient) + "$\n";
+				facture += client.get(i).getNomClient() + " " + formatter.format(prixFactureClient) + "$\n";
 			}
 		}
 	}
@@ -161,7 +169,7 @@ public class Facture {
 
 			for (int j2 = 0; j2 < plats.size() && !trouve; j2++) {
 
-				if (listeCommande.get(i).getRepas().equalsIgnoreCase(plats.get(j2).getNom())) {
+				if (listeCommande.get(i).getNomRepas().equalsIgnoreCase(plats.get(j2).getNomPlats())) {
 					trouve = true;
 
 					if (listeCommande.get(i).getQuantite() > 0) {
@@ -176,7 +184,7 @@ public class Facture {
 
 			if (!trouve) {
 
-				erreurFacture += "Erreur, il n'existe pas de plat nommé: " + listeCommande.get(i).getRepas() + ".\n";
+				erreurFacture += "Erreur, il n'existe pas de plat nommé: " + listeCommande.get(i).getNomRepas() + ".\n";
 
 			}
 		}
@@ -233,9 +241,9 @@ public class Facture {
 	 * Description: Enregistre la facture en fichier texte.
 	 */
 	public void enregistrerFactureFicher() {
-		File file = new File("facture\\Facture-du-" + DateHeure.modifierAffichageDateHeure() + ".txt");
+		File file = new File("facture\\Facture-du-" + DateHeure.getDateFormat() + ".txt");
 		FileWriter writer;
-		
+
 		calculerFacture();
 		try {
 			writer = new FileWriter(file);

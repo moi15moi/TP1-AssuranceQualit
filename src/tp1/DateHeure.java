@@ -5,14 +5,12 @@ import java.time.format.DateTimeFormatter;
 
 public class DateHeure {
     
-	public static String modifierAffichageDateHeure() {
+	public static String getDateFormat() {
 		
-		LocalDateTime dateHeure = LocalDateTime.now();
+		LocalDateTime localDateTime = LocalDateTime.now();
 	
-	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern( "dd-MMMM-yyyy-HH.mm" );
-	    
-	    String dateFormate = dateHeure.format( myFormatObj );
-		
-	    return dateFormate;
+	    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern( "dd-MMMM-yyyy-HH.mm" );
+	    		
+	    return localDateTime.format( dateFormat );
 	}
 }

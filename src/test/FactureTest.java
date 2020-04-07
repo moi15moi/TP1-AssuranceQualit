@@ -53,18 +53,18 @@ public class FactureTest {
 		assertEquals(3.44925, facture.calculPrixTotal(3, 0.15, 0.29925), 0.00001);
 	}
 
-	// fait par Jï¿½rï¿½mie Bergeron
+	// fait par Jérémie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest1() {
 		Client client1 = new Client("test");
 
-		Commande commande1 = new Commande("test1", "repasTest1", "1");
-		Commande commande2 = new Commande("test2", "repasTest2", "2");
-		Commande commande3 = new Commande("test3", "repasTest3", "3");
+		Commande commande1 = new Commande("test1", "repasTest1", 1);
+		Commande commande2 = new Commande("test2", "repasTest2", 2);
+		Commande commande3 = new Commande("test3", "repasTest3", 3);
 
-		Plats repas1 = new Plats("repasTest1", "10");
-		Plats repas2 = new Plats("repasTest2", "5");
-		Plats repas3 = new Plats("repasTest3", "5");
+		Plats repas1 = new Plats("repasTest1", 10);
+		Plats repas2 = new Plats("repasTest2", 5);
+		Plats repas3 = new Plats("repasTest3", 5);
 
 		client1.ajouterCommande(commande1);
 		client1.ajouterCommande(commande2);
@@ -91,18 +91,18 @@ public class FactureTest {
 		assertEquals(35, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par Jï¿½rï¿½mie Bergeron
+	// fait par Jérémie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest2() {
 		Client client1 = new Client("test");
 
-		Commande commande1 = new Commande("test1", "repasTest1", "0");
-		Commande commande2 = new Commande("test2", "repasTest2", "0");
-		Commande commande3 = new Commande("test3", "repasTest3", "0");
+		Commande commande1 = new Commande("test1", "repasTest1", 0);
+		Commande commande2 = new Commande("test2", "repasTest2", 0);
+		Commande commande3 = new Commande("test3", "repasTest3", 0);
 
-		Plats repas1 = new Plats("repasTest1", "10");
-		Plats repas2 = new Plats("repasTest2", "5");
-		Plats repas3 = new Plats("repasTest3", "5");
+		Plats repas1 = new Plats("repasTest1", 10);
+		Plats repas2 = new Plats("repasTest2", 5);
+		Plats repas3 = new Plats("repasTest3", 5);
 
 		client1.ajouterCommande(commande1);
 		client1.ajouterCommande(commande2);
@@ -129,18 +129,18 @@ public class FactureTest {
 		assertEquals(0, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par JÃ©rÃ©mie Bergeron
+	// fait par Jérémie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest3() {
 		Client client1 = new Client("test");
 
-		Commande commande1 = new Commande("test1", "repasTest0", "1");
-		Commande commande2 = new Commande("test2", "repasTest0", "2");
-		Commande commande3 = new Commande("test3", "repasTest0", "3");
+		Commande commande1 = new Commande("test1", "repasTest0", 1);
+		Commande commande2 = new Commande("test2", "repasTest0", 2);
+		Commande commande3 = new Commande("test3", "repasTest0", 3);
 
-		Plats repas1 = new Plats("repasTest1", "10");
-		Plats repas2 = new Plats("repasTest2", "5");
-		Plats repas3 = new Plats("repasTest3", "5");
+		Plats repas1 = new Plats("repasTest1", 10);
+		Plats repas2 = new Plats("repasTest2", 5);
+		Plats repas3 = new Plats("repasTest3", 5);
 
 		client1.ajouterCommande(commande1);
 		client1.ajouterCommande(commande2);
@@ -167,19 +167,19 @@ public class FactureTest {
 		assertEquals(0, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par JÃ©rÃ©mie Bergeron
+	// fait par Jérémie Bergeron
 	@Test
 	public void initialiserFactureTest() {
 		LireFichier fichier = new LireFichier("facture\\factureTest.txt");
 
 		Client client1 = new Client("test");
-		Commande commande1 = new Commande("test", "repasTest1", "1");
-		Commande commande2 = new Commande("test", "repasTest2", "2");
-		Commande commande3 = new Commande("test", "repasTest3", "3");
+		Commande commande1 = new Commande("test", "repasTest1", 1);
+		Commande commande2 = new Commande("test", "repasTest2", 2);
+		Commande commande3 = new Commande("test", "repasTest3", 3);
 
-		Plats repas1 = new Plats("repasTest1", "10");
-		Plats repas2 = new Plats("repasTest2", "5");
-		Plats repas3 = new Plats("repasTest3", "5");
+		Plats repas1 = new Plats("repasTest1", 10);
+		Plats repas2 = new Plats("repasTest2", 5);
+		Plats repas3 = new Plats("repasTest3", 5);
 
 		client1.ajouterCommande(commande1);
 		client1.ajouterCommande(commande2);
@@ -213,7 +213,7 @@ public class FactureTest {
 				factureFichier.calculerPrixBrutCommande(factureFichier.getTableauClient().get(0)), 0.00001);
 	}
 
-	// Fait par JÃ©rÃ©mie Bergeron
+	// Fait par Jérémie Bergeron
 	@Test
 	public void calculerFacture() {
 		LireFichier fichier = new LireFichier("facture\\factureTest.txt");
@@ -224,6 +224,6 @@ public class FactureTest {
 
 		factureFichier.calculerFacture();
 		
-		assertEquals("Factures :\n" + "test 40.24$\n\n", factureFichier.getFacture());
+		assertEquals("Factures :\n" + "test 40,24$\n\n", factureFichier.getFacture());
 	}
 }

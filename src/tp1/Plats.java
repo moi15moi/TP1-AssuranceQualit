@@ -2,16 +2,16 @@ package tp1;
 
 public class Plats {
 
-	private String nom;
+	private String nomPlats;
 	private double prix;
 
-	public Plats(String nom, String prix) {
-		this.nom = nom;
-		this.prix = Double.parseDouble(prix);
+	public Plats(String nomPlats, double prix) {
+		this.nomPlats = nomPlats;
+		this.prix = prix;
 	}
 
-	public String getNom() {
-		return this.nom;
+	public String getNomPlats() {
+		return this.nomPlats;
 	}
 
 	public double getPrix() {
