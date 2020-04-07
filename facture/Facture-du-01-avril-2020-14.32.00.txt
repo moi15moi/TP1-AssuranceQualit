@@ -1,6 +1,0 @@
-Factures :
-Roger 12,07$
-Céline 5,75$
-
-Erreur, la commande 1 de Roger n'est pas valide, car la quantiï¿½ commandï¿½e est  n'est pas valide, car la quantiï¿½ commandï¿½e est 0.
-Erreur, il n'existe pas de plat nommï¿½: Repaus_Poulet.

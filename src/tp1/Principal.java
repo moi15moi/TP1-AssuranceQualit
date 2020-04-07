@@ -8,20 +8,20 @@ public class Principal {
 
         System.out.println("Bienvenue chez Barette !\n");
 
+
         LireFichier fichier = new LireFichier("facture\\1.txt");
 
         if (fichier.exists()) {
 
-            Facture facture = new Facture();
+		Facture facture = new Facture();
 
-            facture.initialiserFacture(fichier.getFichier());
+		facture.initialiserFacture(fichier.getFichier());
 
-            facture.calculerFacture();
+        facture.calculerFacture();
 
-            System.out.println(facture.getFacture());
+        System.out.println(facture.getFacture());
 
-            facture.enregistrerFactureFicher();
+        facture.enregistrerFactureFicher();
         }
     }
-
 }
