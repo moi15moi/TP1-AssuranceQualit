@@ -1,0 +1,4 @@
+Jérémie Bergeron : gestions des erreurs
+
+
+Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.

@@ -1,18 +1,26 @@
 package tp1;
 
+
 public class Principal {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		System.out.println("\nBienvenue chez Barette!\n");
-		
-		LireFichier fichier = new LireFichier("facture\\1.txt");
-		
-		Facture facture = new Facture(fichier.getFichier());
+        System.out.println("Bienvenue chez Barette !\n");
 
-		facture.afficherFacture();
-		
-		
-	}
+        LireFichier fichier = new LireFichier("facture\\1.txt");
 
+        if (fichier.exists()) {
+
+			Facture facture = new Facture();
+	
+			facture.initialiserFacture(fichier.getFichier());
+	
+	        facture.calculerFacture();
+	
+	        System.out.println(facture.getFacture());
+	
+	        facture.enregistrerFactureFicher();
+	        
+        }
+    }
 }

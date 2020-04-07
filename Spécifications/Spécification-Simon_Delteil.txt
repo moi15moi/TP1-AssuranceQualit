@@ -1,0 +1,2 @@
+creer une méthode qui calcul les taxes sur le prix.
+Créer des tests unitaires qui vont tester chacune des fonctions.

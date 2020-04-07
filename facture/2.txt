@@ -1,0 +1,14 @@
+Clients :
+Simon
+Jeremie
+Anthony
+Plats :
+Burger 7.50
+Frites 3
+Boisson_Gazeuse 2.75
+Commandes :
+Anthony Burger 4
+Simon Burger 1
+Jeremie Boisson_Gazeuse 1
+Simon Frites 2
+Fin
