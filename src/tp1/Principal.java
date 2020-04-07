@@ -4,21 +4,24 @@ import java.io.FileNotFoundException;
 
 public class Principal {
 
-	public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
 
-		System.out.println("Bienvenue chez Barette !\n");
+        System.out.println("Bienvenue chez Barette !\n");
 
-		LireFichier fichier = new LireFichier("facture\\1.txt");
+        LireFichier fichier = new LireFichier("facture\\1.txt");
 
-		Facture facture = new Facture();
-		
-		facture.initialiserFacture(fichier.getFichier());
+        if (fichier.exists()) {
 
-		facture.calculerFacture();
+            Facture facture = new Facture();
 
-		System.out.println(facture.getFacture());
+            facture.initialiserFacture(fichier.getFichier());
 
-		facture.enregistrerFactureFicher();
-	}
-	
+            facture.calculerFacture();
+
+            System.out.println(facture.getFacture());
+
+            facture.enregistrerFactureFicher();
+        }
+    }
+
 }

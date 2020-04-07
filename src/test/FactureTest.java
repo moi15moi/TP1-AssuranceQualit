@@ -53,7 +53,7 @@ public class FactureTest {
 		assertEquals(3.44925, facture.calculPrixTotal(3, 0.15, 0.29925), 0.00001);
 	}
 
-	// fait par Jérémie Bergeron
+	// fait par Jï¿½rï¿½mie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest1() {
 		Client client1 = new Client("test");
@@ -91,7 +91,7 @@ public class FactureTest {
 		assertEquals(35, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par Jérémie Bergeron
+	// fait par Jï¿½rï¿½mie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest2() {
 		Client client1 = new Client("test");
@@ -129,7 +129,7 @@ public class FactureTest {
 		assertEquals(0, facture.calculerPrixBrutCommande(client1), 0.00001);
 	}
 
-	// fait par Jérémie Bergeron
+	// fait par JÃ©rÃ©mie Bergeron
 	@Test
 	public void calculerPrixBrutCommandeTest3() {
 		Client client1 = new Client("test");
@@ -213,7 +213,7 @@ public class FactureTest {
 				factureFichier.calculerPrixBrutCommande(factureFichier.getTableauClient().get(0)), 0.00001);
 	}
 
-	// Fait par Jérémie Bergeron
+	// Fait par JÃ©rÃ©mie Bergeron
 	@Test
 	public void calculerFacture() {
 		LireFichier fichier = new LireFichier("facture\\factureTest.txt");
@@ -224,6 +224,6 @@ public class FactureTest {
 
 		factureFichier.calculerFacture();
 		
-		assertEquals("Factures :\n" + "test 40,24$\n\n", factureFichier.getFacture());
+		assertEquals("Factures :\n" + "test 40.24$\n\n", factureFichier.getFacture());
 	}
 }
