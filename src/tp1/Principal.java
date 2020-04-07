@@ -1,10 +1,9 @@
 package tp1;
 
-import java.io.FileNotFoundException;
 
 public class Principal {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         System.out.println("Bienvenue chez Barette !\n");
 

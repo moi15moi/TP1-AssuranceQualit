@@ -2,27 +2,23 @@ package tp1;
 
 public class Commande {
 
-	private String nomClient, repas;
-	int quantite;
+	private String nomClient, nomRepas;
+	private int quantite;
 
-	public Commande(String nomClient, String repas, String quantite) {
-		
+	public Commande(String nomClient, String nomRepas, int quantite) {
 
-		try {
-			this.quantite = Integer.parseInt(quantite);
-			this.nomClient = nomClient;
-			this.repas = repas;
-		} catch (Exception e) {
-			System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
-		}
+		this.quantite = quantite;
+		this.nomClient = nomClient;
+		this.nomRepas = nomRepas;
+
 	}
 
 	public String getNomClient() {
 		return this.nomClient;
 	}
 
-	public String getRepas() {
-		return this.repas;
+	public String getNomRepas() {
+		return this.nomRepas;
 	}
 
 	public int getQuantite() {

@@ -8,16 +8,16 @@ import tp1.Plats;
 
 public class PlatsTest {
 	
-	Plats platTest1 = new Plats("Test1", "1.00");
-	Plats platTest2 = new Plats("Test2", "5.00");
-	Plats platTest3 = new Plats("Test3", "10.00");
+	Plats platTest1 = new Plats("Test1", 1.00);
+	Plats platTest2 = new Plats("Test2", 5.00);
+	Plats platTest3 = new Plats("Test3", 10.00);
 	
 	//fait par Simon St-Germain
 	@Test
 	public void getNomTest() {
-		assertEquals("Test1", platTest1.getNom());
-		assertEquals("Test2", platTest2.getNom());
-		assertEquals("Test3", platTest3.getNom());
+		assertEquals("Test1", platTest1.getNomPlats());
+		assertEquals("Test2", platTest2.getNomPlats());
+		assertEquals("Test3", platTest3.getNomPlats());
 	}
 	
 	//fait par Simon St-Germain
