@@ -42,7 +42,7 @@ public class Facture {
 
 					this.plats.add(platTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 
@@ -55,11 +55,11 @@ public class Facture {
 
 					this.commande.add(comTemp);
 				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.out.println("Le fichier ne respecte pas le format demandÃ© ! (ligne: " + (i + 1) + ")");
 				}
 			}
 
-			// Associe les commandes aux clients et vérifie si le client dans la commande
+			// Associe les commandes aux clients et vÃ©rifie si le client dans la commande
 			// existe
 			for (int i = 0; i < this.commande.size(); i++) {
 
@@ -78,7 +78,7 @@ public class Facture {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respecte pas le format demandé. !");
+			System.out.println("Le fichier ne respecte pas le format demandÃ©. !");
 		}
 	}
 
@@ -134,8 +134,8 @@ public class Facture {
 
 		facture += "Factures :\n";
 
-		// Calcule le prix total de la facture et vérifie si le prix total est égale
-		// à 0
+		// Calcule le prix total de la facture et vÃ©rifie si le prix total est Ã©gale
+		// Ã  0
 		for (int i = 0; i < client.size(); i++) {
 
 			if ((prixFactureClient = calculTaxes(calculerPrixBrutCommande(client.get(i)))) != 0) {
@@ -168,7 +168,7 @@ public class Facture {
 						prix += plats.get(j2).getPrix() * listeCommande.get(i).getQuantite();
 					} else {
 						erreurFacture += "Erreur, la commande " + i + " de " + listeCommande.get(i).getNomClient()
-								+ " n'est pas valide, car la quantité commandé est "
+								+ " n'est pas valide, car la quantitÃ© commandÃ© est "
 								+ listeCommande.get(i).getQuantite() + ".\n";
 					}
 				}
@@ -176,7 +176,7 @@ public class Facture {
 
 			if (!trouve) {
 
-				erreurFacture += "Erreur, il n'existe pas de plat nommé: " + listeCommande.get(i).getRepas() + ".\n";
+				erreurFacture += "Erreur, il n'existe pas de plat nommÃ©: " + listeCommande.get(i).getRepas() + ".\n";
 
 			}
 		}
@@ -187,13 +187,13 @@ public class Facture {
 	/*
 	 * Argument: le prix brut.
 	 * 
-	 * Retour: le prix avec les taxes ajoutées.
+	 * Retour: le prix avec les taxes ajoutÃ©es.
 	 * 
-	 * Description: prend le prix brut qui est appelé et ajoute les taxes.
+	 * Description: prend le prix brut qui est appelÃ© et ajoute les taxes.
 	 */
 	public double calculTaxes(double prixBrut) {
 
-		// déclarations des variables des taxes et d'une autre variable de prix
+		// dÃ©clarations des variables des taxes et d'une autre variable de prix
 		double prixTotal;
 		double montantTPS = calculTPS(prixBrut);
 		double montantTVQ = calculTVQ(prixBrut);
