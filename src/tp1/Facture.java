@@ -24,73 +24,80 @@ public class Facture {
 	}
 
 	public void initialiserFacture(ArrayList<String> fichier) {
-        try {
+		try {
 
-                 int client = fichier.indexOf("Clients :");
-                 int plat = fichier.indexOf("Plats :");
-                 int commande = fichier.indexOf("Commandes :");
-                 int fin = fichier.indexOf("Fin");
+			int client = fichier.indexOf("Clients :");
+			int plat = fichier.indexOf("Plats :");
+			int commande = fichier.indexOf("Commandes :");
+			int fin = fichier.indexOf("Fin");
 
-                 for (int i = client + 1; i < plat; i++) {
-                          Client cliTemp = new Client(fichier.get(i));
-                          this.client.add(cliTemp);
-                 }
+			this.client = mettreClientdansListeClient(client, plat, fichier);
 
-                 for (int i = plat + 1; i < commande; i++) {
-                          String[] ligneFichier = fichier.get(i).split(" ");
+			for (int i = plat + 1; i < commande; i++) {
+				String[] ligneFichier = fichier.get(i).split(" ");
 
-                          if (ligneFichier.length == 2) {
-                                   try {
-                                            double prix = Double.parseDouble(ligneFichier[1]);
-                                            Plats platTemp = new Plats(ligneFichier[0], prix);
-                                            this.plats.add(platTemp);
-                                   } catch (Exception e) {
-                                            System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
-                                   }
-                          } else {
-                                   System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
-                          }
-                 }
+				if (ligneFichier.length == 2) {
+					try {
+						double prix = Double.parseDouble(ligneFichier[1]);
+						Plats platTemp = new Plats(ligneFichier[0], prix);
+						this.plats.add(platTemp);
+					} catch (Exception e) {
+						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+					}
+				} else {
+					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+				}
+			}
 
-                 for (int i = commande + 1; i < fin; i++) {
+			for (int i = commande + 1; i < fin; i++) {
 
-                          String[] ligneFichier = fichier.get(i).split(" ");
+				String[] ligneFichier = fichier.get(i).split(" ");
 
-                          if (ligneFichier.length == 3) {
-                                   try {
-                                            int quantite = Integer.parseInt(ligneFichier[2]);
-                                            Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], quantite);
-                                            this.commande.add(comTemp);
-                                   } catch (Exception e) {
-                                            System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
-                                   }
-                          } else {
-                                   System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
-                          }
-                 }
+				if (ligneFichier.length == 3) {
+					try {
+						int quantite = Integer.parseInt(ligneFichier[2]);
+						Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], quantite);
+						this.commande.add(comTemp);
+					} catch (Exception e) {
+						System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
+					}
+				} else {
+					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+				}
+			}
 
-                 // Associe les commandes aux clients et vérifie si le client dans la commande
-                 // existe
-                 for (int i = 0; i < this.commande.size(); i++) {
+			// Associe les commandes aux clients et vérifie si le client dans la commande
+			// existe
+			for (int i = 0; i < this.commande.size(); i++) {
 
-                          boolean trouver = false;
-                          for (int j = 0; j < this.client.size() && !trouver; j++) {
+				boolean trouver = false;
+				for (int j = 0; j < this.client.size() && !trouver; j++) {
 
-                                   if (this.commande.get(i).getNomClient().equalsIgnoreCase(this.client.get(j).getNomClient())) {
-                                            trouver = true;
-                                            this.client.get(j).ajouterCommande(this.commande.get(i));
-                                   }
-                          }
+					if (this.commande.get(i).getNomClient().equalsIgnoreCase(this.client.get(j).getNomClient())) {
+						trouver = true;
+						this.client.get(j).ajouterCommande(this.commande.get(i));
+					}
+				}
 
-                          if (!trouver) {
-                                   erreurFacture += "Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n";
-                          }
-                 }
+				if (!trouver) {
+					erreurFacture += "Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n";
+				}
+			}
 
-        } catch (Exception e) {
-                 System.out.println("Le fichier ne respecte pas le format demandé. !");
-        }
-}
+		} catch (Exception e) {
+			System.out.println("Le fichier ne respecte pas le format demandé. !");
+		}
+	}
+	
+	public ArrayList<Client> mettreClientdansListeClient(int client, int plat, ArrayList<String> fichier) {
+		
+		for (int i = client + 1; i < plat; i++) {
+			Client cliTemp = new Client(fichier.get(i));
+			this.client.add(cliTemp);
+		}
+		
+		return this.client;
+	}
 
 	public void setTableauClient(ArrayList<Client> pClient) {
 		this.client = pClient;
@@ -105,7 +112,7 @@ public class Facture {
 	}
 
 	public ArrayList<Client> getTableauClient() {
-	return this.client;
+		return this.client;
 	}
 
 	public ArrayList<Plats> getTableauPlats() {
@@ -170,9 +177,9 @@ public class Facture {
 
 		return prix;
 	}
-	
+
 	public double siCommandeTrouver(ArrayList<Commande> listeCommande, double prix) {
-		
+
 		for (int i = 0; i < listeCommande.size(); i++) {
 			boolean trouve = false;
 
@@ -180,7 +187,7 @@ public class Facture {
 
 				if (listeCommande.get(i).getNomRepas().equalsIgnoreCase(plats.get(j2).getNomPlats())) {
 					trouve = true;
-					
+
 					siCommandeQuantitePlusGrandQue0(i, j2, listeCommande, prix);
 				}
 			}
@@ -191,27 +198,28 @@ public class Facture {
 
 			}
 		}
-		
+
 		return prix;
-		
+
 	}
-	
-	public void siCommandeQuantitePlusGrandQue0(int indexCommande, int indexPlat,
-			ArrayList<Commande> listeCommande, double prix) {
-		
+
+	public void siCommandeQuantitePlusGrandQue0(int indexCommande, int indexPlat, ArrayList<Commande> listeCommande,
+			double prix) {
+
 		if (listeCommande.get(indexCommande).getQuantite() > 0) {
 			prix += plats.get(indexPlat).getPrix() * listeCommande.get(indexCommande).getQuantite();
 		} else {
-			erreurFacture += "Erreur, la commande " + indexCommande + " de " + listeCommande.get(indexCommande).getNomClient()
+			erreurFacture += "Erreur, la commande " + indexCommande + " de "
+					+ listeCommande.get(indexCommande).getNomClient()
 					+ " n'est pas valide, car la quantité commandé est "
 					+ listeCommande.get(indexCommande).getQuantite() + ".\n";
 		}
 	}
-	
+
 	public void siCommandePasTrouve(ArrayList<Commande> listeCommande, int indexCommande) {
-		
-		erreurFacture += "Erreur, il n'existe pas de plat nommé: " 
-		+ listeCommande.get(indexCommande).getNomRepas() + ".\n";
+
+		erreurFacture += "Erreur, il n'existe pas de plat nommé: " + listeCommande.get(indexCommande).getNomRepas()
+				+ ".\n";
 	}
 
 	/*
@@ -262,15 +270,17 @@ public class Facture {
 	 * 
 	 * Description: Enregistre la facture en fichier texte.
 	 */
-	
+
 	public void enregistrerFactureFicher() {
+
 		LocalDateTime localDateTime = LocalDateTime.now();
 
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern( "dd-MMMM-yyyy-HH.mm" );
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MMMM-yyyy-HH.mm");
 
-		File file = new File("facture\\Facture-du-" + localDateTime.format( dateFormat ) + ".txt");
+		File file = new File("facture\\Facture-du-" + localDateTime.format(dateFormat) + ".txt");
+
 		FileWriter writer;
-		
+
 		calculerFacture();
 		try {
 			writer = new FileWriter(file);
