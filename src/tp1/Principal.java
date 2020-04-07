@@ -8,10 +8,10 @@ public class Principal {
 
 		System.out.println("Bienvenue chez Barette !\n");
 
-		LireFichier fichier = new LireFichier("facture\\1.txt");
+		LireFichier fichier = new LireFichier("facture\\.txt");
 
 		Facture facture = new Facture();
-		
+
 		facture.initialiserFacture(fichier.getFichier());
 
 		facture.calculerFacture();
@@ -19,6 +19,7 @@ public class Principal {
 		System.out.println(facture.getFacture());
 
 		facture.enregistrerFactureFicher();
+
 	}
-	
+
 }
