@@ -17,6 +17,7 @@ public class Facture {
 	private ArrayList<Commande> commande = new ArrayList<Commande>();
 
 	private String facture = "";
+	private String erreurClient = "";
 	private String erreurFacture = "";
 
 	public Facture() {
@@ -80,7 +81,7 @@ public class Facture {
 				}
 
 				if (!trouver) {
-					System.out.println("Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n");
+					erreurClient += "Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n";
 				}
 			}
 
@@ -132,7 +133,7 @@ public class Facture {
 	 */
 	public String getFacture() {
 
-		return facture + "\n" + erreurFacture;
+		return facture + "\n" + erreurClient + erreurFacture;
 	}
 
 	/*
