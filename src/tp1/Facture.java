@@ -173,7 +173,7 @@ public class Facture {
 		double prix = 0;
 		ArrayList<Commande> listeCommande = pClient.getListeCommande();
 
-		siCommandeTrouver(listeCommande, prix);
+		prix = siCommandeTrouver(listeCommande, prix);
 
 		return prix;
 	}
@@ -188,7 +188,7 @@ public class Facture {
 				if (listeCommande.get(i).getNomRepas().equalsIgnoreCase(plats.get(j2).getNomPlats())) {
 					trouve = true;
 
-					siCommandeQuantitePlusGrandQue0(i, j2, listeCommande, prix);
+					prix = siCommandeQuantitePlusGrandQue0(i, j2, listeCommande, prix);
 				}
 			}
 
@@ -203,7 +203,7 @@ public class Facture {
 
 	}
 
-	public void siCommandeQuantitePlusGrandQue0(int indexCommande, int indexPlat, ArrayList<Commande> listeCommande,
+	public double siCommandeQuantitePlusGrandQue0(int indexCommande, int indexPlat, ArrayList<Commande> listeCommande,
 			double prix) {
 
 		if (listeCommande.get(indexCommande).getQuantite() > 0) {
@@ -214,6 +214,8 @@ public class Facture {
 					+ " n'est pas valide, car la quantité commandé est "
 					+ listeCommande.get(indexCommande).getQuantite() + ".\n";
 		}
+		
+		return prix;
 	}
 
 	public void siCommandePasTrouve(ArrayList<Commande> listeCommande, int indexCommande) {
