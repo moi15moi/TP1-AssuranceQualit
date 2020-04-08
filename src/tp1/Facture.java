@@ -80,7 +80,7 @@ public class Facture {
 				}
 
 				if (!trouver) {
-					erreurFacture += "Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n";
+					System.out.println("Erreur, le client " + this.commande.get(i).getNomClient() + " n'existent pas.\n");
 				}
 			}
 
