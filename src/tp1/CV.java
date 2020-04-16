@@ -82,5 +82,4 @@ public class CV {
 	public void setAttente(String attente) {
 		this.attente = attente;
 	}
-
 }
