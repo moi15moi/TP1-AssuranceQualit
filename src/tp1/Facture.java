@@ -7,6 +7,9 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import com.sun.prism.paint.Stop;
+
 import static tp1.Constantes.TPS;
 import static tp1.Constantes.TVQ;
 
@@ -32,8 +35,24 @@ public class Facture {
 			int commande = fichier.indexOf("Commandes :");
 			int fin = fichier.indexOf("Fin");
 
-			this.client = mettreClientdansListeClient(client, plat, fichier);
+			for (int i = client + 1; i < plat; i++) {
+				String[] ligneFichier = fichier.get(i).split(" ");
+				if (ligneFichier.length == 1) {
+					try {
+						Client cliTemp = new Client(fichier.get(i));
+						this.client.add(cliTemp);
+					} catch (Exception e) {
+						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+						System.exit(0);
+					}
 
+				} else {
+					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.exit(0);
+
+				}
+			}
+			
 			for (int i = plat + 1; i < commande; i++) {
 				String[] ligneFichier = fichier.get(i).split(" ");
 
@@ -44,9 +63,11 @@ public class Facture {
 						this.plats.add(platTemp);
 					} catch (Exception e) {
 						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+						System.exit(0);
 					}
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.exit(0);
 				}
 			}
 
@@ -61,9 +82,11 @@ public class Facture {
 						this.commande.add(comTemp);
 					} catch (Exception e) {
 						System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
+						System.exit(0);
 					}
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+					System.exit(0);
 				}
 			}
 
@@ -89,15 +112,23 @@ public class Facture {
 			System.out.println("Le fichier ne respecte pas le format demandé. !");
 		}
 	}
-	
-	public ArrayList<Client> mettreClientdansListeClient(int client, int plat, ArrayList<String> fichier) {
-		
+
+	public void mettreClientdansListeClient(int client, int plat, ArrayList<String> fichier) {
+
 		for (int i = client + 1; i < plat; i++) {
-			Client cliTemp = new Client(fichier.get(i));
-			this.client.add(cliTemp);
+			String[] ligneFichier = fichier.get(i).split(" ");
+			if (ligneFichier.length == 1) {
+				try {
+					Client cliTemp = new Client(fichier.get(i));
+					this.client.add(cliTemp);
+				} catch (Exception e) {
+					System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+				}
+
+			} else {
+				System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+			}
 		}
-		
-		return this.client;
 	}
 
 	public void setTableauClient(ArrayList<Client> pClient) {
@@ -215,7 +246,7 @@ public class Facture {
 					+ " n'est pas valide, car la quantité commandé est "
 					+ listeCommande.get(indexCommande).getQuantite() + ".\n";
 		}
-		
+
 		return prix;
 	}
 
