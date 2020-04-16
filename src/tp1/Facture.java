@@ -7,9 +7,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
-import com.sun.prism.paint.Stop;
-
 import static tp1.Constantes.TPS;
 import static tp1.Constantes.TVQ;
 
