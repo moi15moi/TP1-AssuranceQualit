@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.sun.prism.paint.Stop;
-
 import static tp1.Constantes.TPS;
 import static tp1.Constantes.TVQ;
 
@@ -24,71 +22,15 @@ public class Facture {
 	private String erreurFacture = "";
 
 	public Facture() {
-
+		
 	}
 
 	public void initialiserFacture(ArrayList<String> fichier) {
 		try {
 
-			int client = fichier.indexOf("Clients :");
-			int plat = fichier.indexOf("Plats :");
-			int commande = fichier.indexOf("Commandes :");
-			int fin = fichier.indexOf("Fin");
-
-			for (int i = client + 1; i < plat; i++) {
-				String[] ligneFichier = fichier.get(i).split(" ");
-				if (ligneFichier.length == 1) {
-					try {
-						Client cliTemp = new Client(fichier.get(i));
-						this.client.add(cliTemp);
-					} catch (Exception e) {
-						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
-						System.exit(0);
-					}
-
-				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
-					System.exit(0);
-
-				}
-			}
-			
-			for (int i = plat + 1; i < commande; i++) {
-				String[] ligneFichier = fichier.get(i).split(" ");
-
-				if (ligneFichier.length == 2) {
-					try {
-						double prix = Double.parseDouble(ligneFichier[1]);
-						Plats platTemp = new Plats(ligneFichier[0], prix);
-						this.plats.add(platTemp);
-					} catch (Exception e) {
-						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
-						System.exit(0);
-					}
-				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
-					System.exit(0);
-				}
-			}
-
-			for (int i = commande + 1; i < fin; i++) {
-
-				String[] ligneFichier = fichier.get(i).split(" ");
-
-				if (ligneFichier.length == 3) {
-					try {
-						int quantite = Integer.parseInt(ligneFichier[2]);
-						Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], quantite);
-						this.commande.add(comTemp);
-					} catch (Exception e) {
-						System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
-						System.exit(0);
-					}
-				} else {
-					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
-					System.exit(0);
-				}
-			}
+			initialiserClient(fichier);
+			initialiserPlat(fichier);			
+			initialiserCommande(fichier);
 
 			// Associe les commandes aux clients et vérifie si le client dans la commande
 			// existe
@@ -112,7 +54,82 @@ public class Facture {
 			System.out.println("Le fichier ne respecte pas le format demandé. !");
 		}
 	}
+	
+	public void initialiserClient(ArrayList<String> fichier) {
+		
+		int client = fichier.indexOf("Clients :");
+		int plat = fichier.indexOf("Plats :");
+		
+		for (int i = client + 1; i < plat; i++) {
+			
+			String[] ligneFichier = fichier.get(i).split(" ");
+			if (ligneFichier.length == 1) {
+				try {
+					Client cliTemp = new Client(fichier.get(i));
+					this.client.add(cliTemp);
+				} catch (Exception e) {
+					System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+					System.exit(0);
+				}
 
+			} else {
+				System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+				System.exit(0);
+			}
+		}
+	}
+	
+	public void initialiserPlat(ArrayList<String> fichier) {
+		
+		int plat = fichier.indexOf("Plats :");
+		int commande = fichier.indexOf("Commandes :");
+		
+		for (int i = plat + 1; i < commande; i++) {
+			
+			String[] ligneFichier = fichier.get(i).split(" ");
+	
+			if (ligneFichier.length == 2) {
+				try {
+					double prix = Double.parseDouble(ligneFichier[1]);
+					Plats platTemp = new Plats(ligneFichier[0], prix);
+					this.plats.add(platTemp);
+				} catch (Exception e) {
+					System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+					System.exit(0);
+				}
+			} else {
+				System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+				System.exit(0);
+			}
+		}
+	}
+	
+	public void initialiserCommande(ArrayList<String> fichier) {
+		
+		int commande = fichier.indexOf("Commandes :");
+		int fin = fichier.indexOf("Fin");
+		
+		for (int i = commande + 1; i < fin; i++) {
+
+			String[] ligneFichier = fichier.get(i).split(" ");
+
+			if (ligneFichier.length == 3) {
+				try {
+					int quantite = Integer.parseInt(ligneFichier[2]);
+					Commande comTemp = new Commande(ligneFichier[0], ligneFichier[1], quantite);
+					this.commande.add(comTemp);
+				} catch (Exception e) {
+					System.out.println("Erreur lors de la lecture de la quantité d'une commande.\n");
+					System.exit(0);
+				}
+			} else {
+				System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
+				System.exit(0);
+			}
+		}
+		
+	}
+	
 	public void mettreClientdansListeClient(int client, int plat, ArrayList<String> fichier) {
 
 		for (int i = client + 1; i < plat; i++) {
