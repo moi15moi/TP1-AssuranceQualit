@@ -1,7 +1,0 @@
-Factures :
-Céline 2,87$
-
-Erreur, le client test n'existent pas.
-Erreur, le client Roger n'existent pas.
-Erreur, le client Roger n'existent pas.
-Erreur, il n'existe pas de plat nommÃ©: Repaus_Poulet.
