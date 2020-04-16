@@ -32,7 +32,10 @@ public class Facture {
 			int commande = fichier.indexOf("Commandes :");
 			int fin = fichier.indexOf("Fin");
 
-			this.client = mettreClientdansListeClient(client, plat, fichier);
+			for (int i = client + 1; i < plat; i++) {
+				Client cliTemp = new Client(fichier.get(i));
+				this.client.add(cliTemp);
+			}
 
 			for (int i = plat + 1; i < commande; i++) {
 				String[] ligneFichier = fichier.get(i).split(" ");
@@ -44,12 +47,13 @@ public class Facture {
 						this.plats.add(platTemp);
 					} catch (Exception e) {
 						System.out.println("Erreur lors de la lecture du prix d'un plats.\n");
+						
 					}
 				} else {
 					System.out.println("Le fichier ne respecte pas le format demandé ! (ligne: " + (i + 1) + ")");
 				}
 			}
-
+			
 			for (int i = commande + 1; i < fin; i++) {
 
 				String[] ligneFichier = fichier.get(i).split(" ");
@@ -88,16 +92,6 @@ public class Facture {
 		} catch (Exception e) {
 			System.out.println("Le fichier ne respecte pas le format demandé. !");
 		}
-	}
-	
-	public ArrayList<Client> mettreClientdansListeClient(int client, int plat, ArrayList<String> fichier) {
-		
-		for (int i = client + 1; i < plat; i++) {
-			Client cliTemp = new Client(fichier.get(i));
-			this.client.add(cliTemp);
-		}
-		
-		return this.client;
 	}
 
 	public void setTableauClient(ArrayList<Client> pClient) {
