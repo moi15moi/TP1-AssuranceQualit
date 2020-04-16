@@ -10,7 +10,6 @@ public class Commande {
 		this.quantite = quantite;
 		this.nomClient = nomClient;
 		this.nomRepas = nomRepas;
-
 	}
 
 	public String getNomClient() {

@@ -20,7 +20,6 @@ public class Principal {
 	        System.out.println(facture.getFacture());
 	
 	        facture.enregistrerFactureFicher();
-	        
         }
     }
 }

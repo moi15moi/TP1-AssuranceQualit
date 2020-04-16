@@ -35,5 +35,4 @@ public class CommandeTest {
 	public void getRepasTest() {
 		assertEquals("repas1", commande1.getNomRepas());
 	}
-
 }
