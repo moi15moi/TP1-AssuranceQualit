@@ -326,7 +326,7 @@ public class Facture {
 
 		LocalDateTime localDateTime = LocalDateTime.now();
 
-		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MMMM-yyyy-HH.mm");
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MMMM-yyyy-HH.mm.ss");
 
 		File file = new File("facture\\Facture-du-" + localDateTime.format(dateFormat) + ".txt");
 
