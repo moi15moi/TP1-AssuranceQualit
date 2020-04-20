@@ -1,0 +1,8 @@
+Factures :
+Roger 54.04$
+Céline 5.75$
+
+Erreur, le client test n'existent pas.
+Erreur, le client test n'existent pas.
+Erreur, il n'existe pas de plat nommé: Repaus_Poulet.
+Erreur, il n'existe pas de plat nommé: Repaus_Poulet.
