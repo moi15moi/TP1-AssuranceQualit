@@ -6,7 +6,7 @@ public class Principal {
 
         System.out.println("Bienvenue chez Barette !\n");
 
-        LireFichier fichier = new LireFichier("facture_test_integre\\DelteilSimon_Test_Integre_2.txt"); 
+        LireFichier fichier = new LireFichier("facture_test_integre\\Bergeron_Test_integre_1.txt"); 
         
         if (fichier.exists()) {
 
