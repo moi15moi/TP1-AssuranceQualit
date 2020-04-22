@@ -1,5 +1,5 @@
-﻿Clients :
-Roger
+Clients :
+Roger test
 Céline
 Steeve
 Plats :
@@ -7,9 +7,7 @@ Poutine 10.5
 Frites 2.5
 Repas_Poulet 15.75
 Commandes :
-test Repas_Poulet 1 
 Roger Poutine 2
 Roger Frites 1
 Céline Frites 1
-Céline Repas_Poulet 1
 Fin

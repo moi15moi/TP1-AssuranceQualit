@@ -1,14 +1,13 @@
 package tp1;
 
-
 public class Principal {
 
     public static void main(String[] args) {
 
         System.out.println("Bienvenue chez Barette !\n");
 
-        LireFichier fichier = new LireFichier("facture\\1.txt");
-
+        LireFichier fichier = new LireFichier("facture_test_integre\\Bergeron_Test_integre_1.txt"); 
+        
         if (fichier.exists()) {
 
 			Facture facture = new Facture();

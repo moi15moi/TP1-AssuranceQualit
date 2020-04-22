@@ -1,0 +1,6 @@
+Factures :
+Roger 27.02$
+Céline 2.87$
+
+Erreur, le client test n'existent pas.
+Erreur, il n'existe pas de plat nommé: Repaus_Poulet.
